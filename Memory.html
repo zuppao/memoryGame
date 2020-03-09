@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./lib/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./lib/fontawesome-free/css/brands.min.css">
+
+    <!-- AdminLTE -->
+    <link rel="stylesheet" href="./lib/adminlte/css/adminlte.css" />
+    <!-- Game CSS -->
+    <link rel="stylesheet" href="./css/memory.css" />
+</head>
+<body class="sidebar-collapse">
+    <!-- jQuery -->
+    <script src="./lib/jquery/jquery.min.js"></script>
+    <!-- jQuery-UI -->
+    <script src="./lib/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="./lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE -->
+    <script src="./lib/adminlte/js/adminlte.js"></script>
+
+    <!-- Game JS -->
+    <script src="./js/memory.js"></script>
+
+    <div class="wrapper">
+        <main role="main">
+            <div class="content-wrapper">
+                <!-- Main content -->
+                <section class="content p-3">
+                    <div class="row justify-content-center">
+
+                        <div class="col-4" style="display:none;">
+                            <i class="fas fa-grin-wink text-success noEffect" id="iconOK"></i>
+                            <i class="fas fa-sad-tear text-danger noEffect" id="iconNOT"></i>
+                        </div>
+                        <div class="col-auto">
+                            <audio id="sfxFlip" src="./sfx/flipcard.wav" preload="auto"></audio>
+                            <audio id="sfxFlip2" src="./sfx/flipcard2.wav" preload="auto"></audio>
+                            <audio id="sfxWin2" src="./sfx/win2.wav" preload="auto"></audio>
+                        </div>
+
+                        <div class="col-auto">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Memory Game</h3>
+                                </div>
+                                <div class="card-body" id="board">
+
+
+                                </div>
+
+                                <div class="card-footer">
+                                    <div class="row justify-content-center">
+                                        <div class="col-auto">
+                                            <button class="btn bg-gradient-danger" id="backBtnID">
+                                                Restart <i class="fas fa-redo-alt"></i>
+                                            </button>
+                                        </div>
+                                        <div class="col"></div>
+                                        <div class="col-auto pt-2">
+                                            Tries: <label id="triesLb">0</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="endModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header bg-gradient-success p-2">
+                                    <h4 class="modal-title">Congrats</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>You finished the game with <label id="triesLb">0</label> tries.</p>
+                                </div>
+                                <div class="modal-footer justify-content-end p-1">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </section>
+            </div>
+        </main>
+
+
+
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 3.0.1
+            </div>
+            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+            reserved.
+        </footer>
+    </div>
+
+</body>
+</html>
+

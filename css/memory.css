@@ -1,0 +1,57 @@
+.flipper {
+    height: 120px;
+    width: 120px;
+    perspective: 1000px;
+}
+
+.cardF {
+    height: 100%;
+    width: 100%;
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    padding-top: 30px; /* this will control the 'Vertical Center Align' */
+}
+
+.flipper.flip .cardF {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    /* This is to fill the entire 'container' (cardF) */
+    width: 100%;
+    position: absolute;
+    backface-visibility: hidden; /* This is just to not show the back of the card*/
+}
+
+.card-front {
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+    opacity: .5;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+    .card-front, .card-back i {
+        font-size: 35px;
+    }
+
+.card-success {
+    color: #ffffff !important;
+    background-color: #3d9970 !important;
+}
+
+i {
+    transition: 0.4s;
+}
+
+.effectTest {
+    visibility: visible;
+    font-size: 100px;
+}
+
+.noEffect {
+    visibility: hidden;
+    font-size: 35px;
+}
