@@ -21,6 +21,7 @@
     width: 100%;
     position: absolute;
     backface-visibility: hidden; /* This is just to not show the back of the card*/
+    font-size: 35px;
 }
 
 .card-front {
@@ -32,10 +33,6 @@
 .card-back {
     transform: rotateY(180deg);
 }
-
-    .card-front, .card-back i {
-        font-size: 35px;
-    }
 
 .card-success {
     color: #ffffff !important;

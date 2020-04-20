@@ -1,17 +1,21 @@
-var cardTurned_1 = null;
-var cardTurned_2 = null;
-var tries = 0;
-var theme_1 = new Array("ghost", "robot", "gamepad", "thumbs-up", "trophy", "wifi", "phone-alt", "jedi",
-    "ghost", "robot", "gamepad", "thumbs-up", "trophy", "wifi", "phone-alt", "jedi");
+var cardTurned_1 = null, cardTurned_2 = null;
+var chances = 0;
+var selectedTheme = [], backIcon;
+
 $(function () {
+    SetTheme(idTheme.value);
     ResetGame();
 
-    $(backBtnID).on("click", function () {
+    $(btRestart).on("click", function () {
         $("#board").empty();
         ResetGame();
     });
 
-
+    $(idTheme).on("change", function (_obj) {
+        SetTheme(idTheme.value);
+        $("#board").empty();
+        ResetGame();
+    });
 });
 
 function shuffle(array) {
@@ -38,21 +42,16 @@ function GetCardSimbol(_element) {
 
 async function CheckCards() {
     if (GetCardSimbol(cardTurned_1) != GetCardSimbol(cardTurned_2)) {
-        Match(false);
         $(sfxFlip)[0].play();
-        tries++;
-        $(triesLb).text(tries);
+        chances++;
+        $(lbChance).text(chances);
         $(cardTurned_1).toggleClass("flip");
         $(cardTurned_2).toggleClass("flip");
-
     }
     else {
-        Match(true);
         $(sfxWin2)[0].play();
-
         $(cardTurned_1).children().toggleClass("card-success");
         $(cardTurned_2).children().toggleClass("card-success");
-
     }
     cardTurned_1 = null;
     cardTurned_2 = null;
@@ -69,20 +68,21 @@ async function CheckCards() {
         GameOver();
 }
 
-
 function ResetGame() {
-    tries = 0;
-    $(triesLb).text(tries);
+    cardTurned_1 = null;
+    cardTurned_2 = null;
+    chances = 0;
+    $(lbChance).text(chances);
 
-    shuffle(theme_1);
+    shuffle(selectedTheme);
     var iconIDX = 0;
 
     for (var l = 0; l < 4; l++) {
         var cells = '';
         for (var c = 0; c < 4; c++) {
             cells += '<div class="flipper col-auto m-2 text-center"><div class="cardF bg-warning shadow rounded border border-secondary">' +
-                '<div class="card-front"><i class="fas fa-crown"></i></div>' +
-                '<div class="card-back"><i class="fas fa-' + theme_1[iconIDX] + '"></i></div>' +
+                '<div class="card-front"><i class="fas fa-'+backIcon+'"></i></div>' +
+                '<div class="card-back"><i class="fas fa-' + selectedTheme[iconIDX] + '"></i></div>' +
                 '</div></div>';
             iconIDX++;
         }
@@ -120,23 +120,63 @@ var FlipClick = function () {
 }
 
 function GameOver() {
-    $(triesLb).text(tries++);
+    $(lbChance).text(chances++);
     $('#endModal').modal('toggle');
 }
 
+function SetTheme(_theme) {
+    switch(_theme){
+        case "Covid-19":
+            backIcon = "biohazard";
+            selectedTheme = new Array("hands-wash","user-nurse","head-side-mask","pump-medical","viruses","lungs-virus","head-side-cough","virus",
+                                      "hands-wash","user-nurse","head-side-mask","pump-medical","viruses","lungs-virus","head-side-cough","virus");
+            break;
 
+        case "Games":
+            backIcon = "crown";
+            selectedTheme = new Array("chess-board","chess-knight","gamepad","trophy","dice","ghost","headset","puzzle-piece",
+                                      "chess-board","chess-knight","gamepad","trophy","dice","ghost","headset","puzzle-piece");
+            break;
 
+        case "Technology":
+            backIcon = "laptop";
+            selectedTheme = new Array("wifi","network-wired","map-marker-alt","print","sim-card","microchip","satellite","mobile-alt",
+                                      "wifi","network-wired","map-marker-alt","print","sim-card","microchip","satellite","mobile-alt");
+            break;
 
-function Match(_result) {
-    return;
-    //it´s just a test, but I didn´t like the final result... I´ll use it in a future project
-    Emoji(_result);
-    setTimeout(() => { Emoji(_result); }, 600);
-}
-function Emoji(_result) {
-    if (_result) {
-        $(iconOK).toggleClass("effectTest").toggleClass("noEffect").toggleClass("fa-grin-wink").toggleClass("fa-grin");
-    } else {
-        $(iconNOT).toggleClass("effectTest").toggleClass("noEffect").toggleClass("fa-frown-open").toggleClass("fa-sad-tear");
+        case "Nerd":
+            backIcon = "dice-d20";
+            selectedTheme = new Array("ring","jedi","hand-spock","robot","rocket","dungeon","hat-wizard","quidditch",
+                                      "ring","jedi","hand-spock","robot","rocket","dungeon","hat-wizard","quidditch");
+            break;
+
+        case "Vehicle":
+            backIcon = "traffic-light";
+            selectedTheme = new Array("tractor","car","bus","motorcycle","truck-moving","helicopter","sleigh","gas-pump",
+                                      "tractor","car","bus","motorcycle","truck-moving","helicopter","sleigh","gas-pump");
+            break;
+
+        case "Natural":
+            backIcon = "dove";
+            selectedTheme = new Array("tree","fire-alt","wind","snowflake","water","leaf","seedling","cannabis",
+                                      "tree","fire-alt","wind","snowflake","water","leaf","seedling","cannabis");
+            break;
+
+        case "Sports":
+            backIcon = "quidditch";
+            selectedTheme = new Array("snowboarding","futbol","table-tennis","running","biking","swimmer","hockey-puck","volleyball-ball",
+                                      "snowboarding","futbol","table-tennis","running","biking","swimmer","hockey-puck","volleyball-ball");
+            break;
+
+        case "Animals":
+            backIcon = "paw";
+            selectedTheme = new Array("dragon","dog","cat","fish","spider","horse","frog","dove",
+                                      "dragon","dog","cat","fish","spider","horse","frog","dove");
+            break;
+
+        default:
+            backIcon = "crown";
+            selectedTheme = new Array("ghost", "robot", "gamepad", "thumbs-up", "trophy", "wifi", "phone-alt", "jedi",
+                                      "ghost", "robot", "gamepad", "thumbs-up", "trophy", "wifi", "phone-alt", "jedi");
     }
 }

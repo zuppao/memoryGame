@@ -10,8 +10,8 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.css" />
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="./lib/fontawesome-free/css/all.min.css">
-    <link rel="stylesheet" href="./lib/fontawesome-free/css/brands.min.css">
+    <!--<link rel="stylesheet" href="./lib/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="./lib/fontawesome-free/css/brands.min.css">-->
 
     <!-- AdminLTE -->
     <link rel="stylesheet" href="./lib/adminlte/css/adminlte.css" />
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./css/memory.css" />
     
     <!-- Font-awesome -->
-    <!-- <script src="https://kit.fontawesome.com/8ab63282bb.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/8ab63282bb.js" crossorigin="anonymous"></script>
 </head>
 <body class="sidebar-collapse">
     <!-- jQuery -->
@@ -54,28 +54,48 @@
                         <div class="col-auto">
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Memory Game</h3>
+                                    <div class="row justify-content-between">
+                                        <div class="col-auto pt-2">
+                                            <h5>Memory Game</h5>
+                                        </div>
+                                        <div class="col-auto">
+                                            <div class="row">
+                                                <div class="col-auto pt-2">
+                                                    <label>Theme</label>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <select class="form-control" id="idTheme">
+                                                        <option selected>Games</option>
+                                                        <option>Covid-19</option>
+                                                        <option>Technology</option>
+                                                        <option>Nerd</option>
+                                                        <option>Vehicle</option>
+                                                        <option>Natural</option>
+                                                        <option>Sports</option>
+                                                        <option>Animals</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="card-body" id="board">
-
-
                                 </div>
 
                                 <div class="card-footer">
-                                    <div class="row justify-content-center">
+                                    <div class="row justify-content-between">
                                         <div class="col-auto">
-                                            <button class="btn bg-gradient-danger" id="backBtnID">
+                                            <button class="btn bg-gradient-danger" id="btRestart">
                                                 Restart <i class="fas fa-redo-alt"></i>
                                             </button>
                                         </div>
-                                        <div class="col"></div>
                                         <div class="col-auto pt-2">
-                                            Tries: <label id="triesLb">0</label>
+                                            Chances: <label id="lbChance">0</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
 
                         </div>
                     </div>
@@ -87,7 +107,7 @@
                                     <h4 class="modal-title">Congrats</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p>You finished the game with <label id="triesLb">0</label> tries.</p>
+                                    <p>You finished the game with <label id="lbChance">0</label> chance(s).</p>
                                 </div>
                                 <div class="modal-footer justify-content-end p-1">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
@@ -101,7 +121,7 @@
             </div>
         </main>
 
-
+        
 
         <footer class="main-footer">
             <div class="float-right d-none d-sm-block">
