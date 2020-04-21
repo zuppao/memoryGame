@@ -8,7 +8,7 @@ Just for Fun, no _Industrial Secrets_ here!
 
 ![image.png](/screen.png)
 
-There´s no need to explain, just try it: [**Play**](https://rawcdn.githack.com/zuppao/memoryGame/953a4abe95413b5fdcf5f1656f39c5911cc28ef0/Memory.html) 
+There´s no need to explain, just try it: [**Play**](https://rawcdn.githack.com/zuppao/memoryGame/5969a3e845f96e8846a46dc8102638e02cb97204/Memory.html) 
 
 Have Fun!<br />
 Zuppao
